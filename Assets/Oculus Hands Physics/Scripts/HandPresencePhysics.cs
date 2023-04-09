@@ -10,14 +10,12 @@ public class HandPresencePhysics : MonoBehaviour
     public Renderer nonPhysicalHand;
     public float showNonPhysicalHandDistance = 0.05f; // 5 centimeters
     private Collider[] handcolliders;
-    private bool grabbing;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         handcolliders = GetComponentsInChildren<Collider>();
-        grabbing = false;
     }
 
     public void EnableHandCollider()
@@ -35,18 +33,14 @@ public class HandPresencePhysics : MonoBehaviour
         {
             item.enabled = false;
         }
-        grabbing = true;
     }
 
  
 
     public void EnableHandColliderDelay(float delay)
     {
+        Invoke("EnableHandCollider", delay);
 
-        if (!grabbing)
-        {
-            Invoke("EnableHandCollider", delay);
-        }
  
         // Call the function after some seconds of delay
         
