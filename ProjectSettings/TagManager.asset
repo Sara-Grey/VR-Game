@@ -8,6 +8,7 @@ TagManager:
   - Seed
   - Hoe
   - Carrot
+  - Water
   layers:
   - Default
   - TransparentFX

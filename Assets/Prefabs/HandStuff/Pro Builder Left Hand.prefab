@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5378681329841654947}
   - component: {fileID: 5887805358879642727}
   m_Layer: 0
-  m_Name: Left Hand
+  m_Name: Pro Builder Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
