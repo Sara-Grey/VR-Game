@@ -10,13 +10,12 @@ public class WateringCanBehavior : MonoBehaviour
     public Transform frontOfWateringCan;
     public XRGrabInteractable interactable;
 
+
     public void Water()
     {
-        
-       
         {
             GameObject dripping = Instantiate(waterDropletObject, frontOfWateringCan.position, frontOfWateringCan.rotation);
-            Destroy(dripping, 2f);
+            Destroy(dripping, 1f);
         }
         
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DirtBehavior : MonoBehaviour
@@ -8,6 +9,8 @@ public class DirtBehavior : MonoBehaviour
     public GameObject seedling;
     public GameObject plant; // Change this to be a seedling (stages: seedling, growing, full grown)
     public Material altmaterial;
+    public SeedlingBehavior seedlingBehavior;
+   // public Collider watercollider;
     public bool TILLED;
     public bool FILLED;
     // Start is called before the first frame update
@@ -23,12 +26,11 @@ public class DirtBehavior : MonoBehaviour
         if (other.gameObject.tag == "Seed" && TILLED && !FILLED)
         {
             Destroy(other.gameObject);
-            // Spawn plant to be in the center of the dirt cube 
+            // Spawn seedling to be in the center of the dirt cube 
             Instantiate(seedling, dirtObject.GetComponent<Renderer>().bounds.center, seedling.transform.rotation);
-            
             FILLED = true; 
         }
-
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -38,20 +40,12 @@ public class DirtBehavior : MonoBehaviour
         {
             dirtObject.GetComponent<MeshRenderer>().material = altmaterial;
             TILLED = true;
-            // TEST THIS BOOLEAN WHEN YOU GET BACK
-
-
         }
-    }
-
-
-
-
-
+    } 
 
     // Update is called once per frame
     void Update()
     {
-        
+     
     }
 }
