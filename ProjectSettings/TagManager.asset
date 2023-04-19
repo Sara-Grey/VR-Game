@@ -9,6 +9,8 @@ TagManager:
   - Hoe
   - Carrot
   - Water
+  - Plant
+  - Seedling
   layers:
   - Default
   - TransparentFX
