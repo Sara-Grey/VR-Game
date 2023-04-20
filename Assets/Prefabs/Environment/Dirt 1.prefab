@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
+  - {fileID: 2100000, guid: 7c76e9ab263e441888c9feb094be3382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b0d51c11dc1a72448a546a0241155737, type: 2}
+  - {fileID: 2100000, guid: 7c76e9ab263e441888c9feb094be3382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -241,7 +241,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
+  - {fileID: 2100000, guid: 7c76e9ab263e441888c9feb094be3382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,23 +394,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a08ed2e3c87ec4dadb1f9cff597cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirtObject: {fileID: 7791870684702585686}
+  currentday: {fileID: 3261365702232292147}
+  taskChecker: {fileID: 0}
   seedlingBehavior: {fileID: 2594631546802178479, guid: 9248d9e16131bca4ebd6a32f7a751a13,
     type: 3}
-  seedling: {fileID: 2594631546802178472, guid: 9248d9e16131bca4ebd6a32f7a751a13,
-    type: 3}
-  plant: {fileID: 855044432368962980, guid: 517548d6ee4c1db478cf7fd6f336b632, type: 3}
+  dirtObject: {fileID: 7791870684702585686}
+  carrot: {fileID: 0}
+  cabbage: {fileID: 0}
+  carrotSeedling: {fileID: 0}
+  cabbageSeedling: {fileID: 0}
+  carrotJuvie: {fileID: 0}
+  dirtDroplet: {fileID: 0}
   altmaterial: {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
   DirtRenderer1: {fileID: 1062850731970372873}
   DirtRenderer2: {fileID: 702263695230459043}
   DirtRenderer3: {fileID: 6608341592192608561}
+  DEAD: 0
   TILLED: 0
   PLANTED: 0
   FILLED: 0
-  filledCounter: 0
-  currentday: {fileID: 3261365702232292147}
+  dirtFillCounter: 0
+  waterFillCounter: 0
   dayPlanted: 0
-  REPLACE: 0
+  WATERED: 0
 --- !u!114 &3261365702232292147
 MonoBehaviour:
   m_ObjectHideFlags: 0
