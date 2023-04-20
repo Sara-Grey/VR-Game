@@ -14,6 +14,9 @@ TagManager:
   - DirtDroplet
   - Shovel
   - Well
+  - CarrotSeed
+  - CabbageSeed
+  - Cabbage
   layers:
   - Default
   - TransparentFX

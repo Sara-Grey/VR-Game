@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8803944902816030160}
   - component: {fileID: 5585095392799412853}
   - component: {fileID: 7667037391473485503}
+  - component: {fileID: 4326146182315461319}
   m_Layer: 0
   m_Name: Carrot_seedling
-  m_TagString: Untagged
+  m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 45a654998b3c18340846ad5b611867bd, type: 3}
+  - {fileID: 2100000, guid: d8d9972007d424950807182cc8a3923c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4326146182315461319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171277479131318122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01765322, y: 0.011189839, z: 0.017769583}
+  m_Center: {x: -0.000018701423, y: -0.0157738, z: -0.00002901908}

@@ -15,7 +15,7 @@ public class ShovelBehavior : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Seedling" || other.tag == "Plant" || other.tag == "DirtDroplet")
+        if (other.tag == "Seedling" || other.tag == "Carrot" ||  other.tag == "Cabbage" || other.tag == "DirtDroplet")
         {
             Destroy(other.gameObject);
         }

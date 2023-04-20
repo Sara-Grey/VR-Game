@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2619091674351350139}
   - component: {fileID: 6391479968044417010}
   - component: {fileID: 7047500122655152771}
+  - component: {fileID: 8039438130394777530}
   m_Layer: 0
   m_Name: Cabbage_adult
-  m_TagString: Untagged
+  m_TagString: Cabbage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,3 +251,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.0052835853
   m_Center: {x: -0.000027752289, y: 0.0041306857, z: -0.00015519545}
+--- !u!135 &8039438130394777530
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862669909838849661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01591044
+  m_Center: {x: 0, y: 0, z: 0.00042802375}

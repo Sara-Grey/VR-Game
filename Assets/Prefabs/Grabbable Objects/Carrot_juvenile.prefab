@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8566005651523334141}
   - component: {fileID: 4706062960395968600}
   - component: {fileID: 7398213649100608658}
+  - component: {fileID: 4473370446027429658}
   m_Layer: 0
   m_Name: Carrot_juvenile
-  m_TagString: Untagged
+  m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: eb381c78415156d4bb5622fb74294d3b, type: 3}
+  - {fileID: 2100000, guid: 33ecaba6c13520d4f9426713c0f984dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4473370446027429658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055402316843791687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.021809356, y: 0.019848585, z: 0.021685608}
+  m_Center: {x: 0.0002255803, y: -0.01617566, z: -0.000098528806}

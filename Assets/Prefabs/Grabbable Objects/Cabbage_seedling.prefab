@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4530901997155691901}
   - component: {fileID: 670795315520840408}
   - component: {fileID: 3363014097641494034}
+  - component: {fileID: 4864208170436884411}
   m_Layer: 0
   m_Name: Cabbage_seedling
-  m_TagString: Untagged
+  m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3867237416324757447}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.1289, y: 4.1289, z: 4.1289}
+  m_LocalScale: {x: 10.607231, y: 10.607231, z: 10.607231}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: d294bdf2754f7234f97950a902bd8e08, type: 3}
+  - {fileID: 2100000, guid: 33ecaba6c13520d4f9426713c0f984dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4864208170436884411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867237416324757447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019813629, y: 0.014878404, z: 0.01955956}
+  m_Center: {x: 4.6566126e-10, y: -0.0000056782733, z: -0.001183553}

@@ -17,14 +17,19 @@ public class DirtBehavior : MonoBehaviour
     public GameObject cabbageSeedling;
     //public GameObject potatoSeedling;
     public GameObject carrotJuvie;
-
-    public GameObject plant; // Change this to be a seedling (stages: seedling, growing, full grown)
+    private GameObject plantInstance;
+    private GameObject carrotInstance;
+    private GameObject carrotFinalInstance;
+    private GameObject finalCarrotInstance;
     
+
+    public GameObject dirtDroplet;
     public Material altmaterial;
     public MeshRenderer DirtRenderer1;
     public MeshRenderer DirtRenderer2;
     public MeshRenderer DirtRenderer3;
 
+    public bool DEAD;
     public bool TILLED;
     public bool PLANTED;
     public bool FILLED; 
@@ -45,6 +50,7 @@ public class DirtBehavior : MonoBehaviour
         PLANTED = false;
         FILLED = false;
         WATERED = false;
+        DEAD = false;
         dirtObject.GetComponent<MeshRenderer>().enabled = false;
         DirtRenderer1.enabled = false;
         DirtRenderer2.enabled = false;
@@ -56,13 +62,13 @@ public class DirtBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        dirtFillCounter++;
         // FILL WITH DIRT 
         if (other.gameObject.tag == "DirtDroplet")
         {
             if (dirtFillCounter < 3)
             {
                 Destroy(other.gameObject);
-                dirtFillCounter++;
                 print(dirtFillCounter);
             }
 
@@ -71,6 +77,19 @@ public class DirtBehavior : MonoBehaviour
                 print("FILLED");
                 FILLED = true;
             }
+            /*
+            if (dirtFillCounter >= 4)
+            {
+                DirtRenderer1.enabled = false;
+                DirtRenderer2.enabled = false;
+                DirtRenderer3.enabled = false;
+                WATERED = false;
+                TILLED = false;
+                PLANTED = false;
+                FILLED = false;
+
+            }
+            */
         }
         // PLANT SEED 
         if (other.gameObject.name.EndsWith("Seed") && TILLED && !PLANTED)
@@ -78,14 +97,14 @@ public class DirtBehavior : MonoBehaviour
             seedname = other.gameObject.name;
             Destroy(other.gameObject);
             // Spawn seedling to be in the center of the dirt cube 
-            if (other.gameObject.name.StartsWith("Carrot"))
+            if (other.gameObject.tag == "CarrotSeed")
             {
-                Instantiate(carrotSeedling, dirtObject.GetComponent<Renderer>().bounds.center, carrotSeedling.transform.rotation);
+                plantInstance = Instantiate(carrotSeedling, dirtObject.GetComponent<Renderer>().bounds.center, carrotSeedling.transform.rotation);
 
             }
-            if (other.gameObject.name.StartsWith("Cabbage"))
+            if (other.gameObject.tag == "CabbageSeed")
             {
-                Instantiate(cabbageSeedling, dirtObject.GetComponent<Renderer>().bounds.center, cabbageSeedling.transform.rotation);
+                plantInstance = Instantiate(cabbageSeedling, dirtObject.GetComponent<Renderer>().bounds.center, cabbageSeedling.transform.rotation);
 
             }
             /*
@@ -104,53 +123,77 @@ public class DirtBehavior : MonoBehaviour
         // WATER
         if (other.gameObject.tag == "Water" && TILLED && PLANTED)
         {
+            waterFillCounter++;
             if (waterFillCounter < 3)
             {
                 Destroy(other.gameObject);
-                waterFillCounter++;
                 print(waterFillCounter);
             }
 
             if (waterFillCounter == 3)
             {
+                Destroy(other.gameObject);
+
                 print("WATERED");
                 WATERED = true;
             }
+            if (waterFillCounter >= 4)
+            {
+                Destroy(other.gameObject);
+
+                DirtRenderer1.enabled = false;
+                DirtRenderer2.enabled = false;
+                DirtRenderer3.enabled = false;
+                WATERED = false;
+                TILLED = false;
+                PLANTED = false;
+                FILLED = false;
+                plantInstance.GetComponent<Renderer>().material = altmaterial;
+                print("OverFILLED");
+            }
         }
-        
-        
-        
-    }
+
+        if (other.gameObject.tag == "Carrot" || other.gameObject.tag == "Cabbage")
+        {
+            print("READY FOR HARVEST");
+        }
+
+    } // END OF ON-TRIGGER-ENTER FUNCTION
 
     public void Planting()
     {
-        
-        if (currentday.day == (dayPlanted + 1) && PLANTED && WATERED)
+        // ONE DAY  
+        if (currentday.day == (dayPlanted + 1) && PLANTED && WATERED && plantlimit > 0)
         {
             if (seedname == "CabbageSeed" && plantlimit > 0)
             {
+                print("made it to cabbage growth");
                 GameObject cabbageInstance;
-                cabbageInstance = Instantiate(cabbage, cabbageSeedling.GetComponent<Transform>().position, cabbageSeedling.GetComponent<Transform>().rotation) as GameObject;
-                Destroy(cabbageSeedling);
+                cabbageInstance = Instantiate(cabbage, dirtObject.GetComponent<Transform>().position, cabbageSeedling.GetComponent<Transform>().rotation) as GameObject;
+                Destroy(plantInstance.gameObject);
                 plantlimit--;
             }
 
-            if (seedname == "CarrotSeed" && plantJuvilimit >0)
+            
+            if  (seedname == "CarrotSeed" && plantJuvilimit >0)
             {
-                GameObject carrotInstance;
-                carrotInstance = Instantiate(carrotJuvie, carrotSeedling.GetComponent<Transform>().position, carrotSeedling.GetComponent<Transform>().rotation) as GameObject;
-                Destroy(carrotSeedling);
+                
+                carrotInstance = Instantiate(carrotJuvie, dirtObject.GetComponent<Transform>().position, carrotSeedling.GetComponent<Transform>().rotation) as GameObject;
+                Destroy(plantInstance.gameObject);
                 plantJuvilimit--;
+                WATERED = false;
+                waterFillCounter = 0;
             }
-
+            
         }
+        // DOS DIAS  
         if (currentday.day == (dayPlanted + 2) && PLANTED && WATERED)
         {
             if(seedname == "CarrotSeed" && plantlimit >0)
             {
-                GameObject carrotInstance;
-                carrotInstance = Instantiate(carrot, carrotJuvie.GetComponent<Transform>().position, carrotJuvie.GetComponent<Transform>().rotation) as GameObject;
-                Destroy(carrotSeedling);
+        
+                finalCarrotInstance = Instantiate(carrot, dirtObject.GetComponent<Transform>().position, carrotJuvie.GetComponent<Transform>().rotation) as GameObject;
+                Destroy(carrotInstance.gameObject);
                 plantlimit--;
             }
         }
@@ -169,10 +212,27 @@ public class DirtBehavior : MonoBehaviour
             DirtRenderer1.enabled = false;
             DirtRenderer2.enabled = false;
             DirtRenderer3.enabled = false;
+            WATERED = false;
+            TILLED = false;
+            PLANTED = false;
+            FILLED = false;
+        }
+        if (other.gameObject.tag == "Carrot" || other.gameObject.tag == "Cabbage")
+        {
+            DirtRenderer1.enabled = false;
+            DirtRenderer2.enabled = false;
+            DirtRenderer3.enabled = false;
+            WATERED = false;
+            TILLED = false;
+            PLANTED = false;
+            FILLED = false;
         }
     }
 
-    
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
