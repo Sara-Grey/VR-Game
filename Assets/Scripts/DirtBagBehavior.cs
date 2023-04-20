@@ -14,10 +14,17 @@ public class DirtBagBehavior : MonoBehaviour
         if (value)
         {
             GameObject dripping = Instantiate(dirtspeck, frontOfDirtBag.position, frontOfDirtBag.rotation);
-            Destroy(dripping, 2f);
         }
     }
-
+    /*
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Dirt" )
+        {
+            Destroy(dirtspeck);
+        }
+    }
+    */
     public void Update()
     {
         
