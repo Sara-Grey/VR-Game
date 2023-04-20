@@ -7,10 +7,13 @@ using UnityEngine;
 public class DirtBehavior : MonoBehaviour
 {
     public GameObject dirtObject;
+    public SeedlingBehavior seedlingBehavior;
     public GameObject seedling;
+
+
     public GameObject plant; // Change this to be a seedling (stages: seedling, growing, full grown)
     public Material altmaterial;
-    public SeedlingBehavior seedlingBehavior;
+    
     public MeshRenderer DirtRenderer1;
     public MeshRenderer DirtRenderer2;
     public MeshRenderer DirtRenderer3;
@@ -27,6 +30,7 @@ public class DirtBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        seedlingBehavior = seedling.GetComponent<SeedlingBehavior>();
         REPLACE = false;
         TILLED = false;
         PLANTED = false;
@@ -83,15 +87,31 @@ public class DirtBehavior : MonoBehaviour
             TILLED = true;
             
         }
+        if (other.gameObject.tag == "Shovel" && FILLED)
+        {
+            DirtRenderer1.enabled = false;
+            DirtRenderer2.enabled = false;
+            DirtRenderer3.enabled = false;
+        }
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
+        seedlingBehavior.Test();
+        /*
+        if (seedling.GetComponent<SeedlingBehavior>() != null)
+        {
+            print("ABLE TO FIND IT ");
+        }
+        print(seedling.GetComponent<SeedlingBehavior>().WATERED);        
         if (FILLED)
         {
             DirtRenderer1.enabled = true;
         }
+        */
         if (TILLED)
         {
             DirtRenderer1.enabled = false;
@@ -102,13 +122,18 @@ public class DirtBehavior : MonoBehaviour
             DirtRenderer2.enabled = false;
             DirtRenderer3.enabled = true;
         }
+
+
         // Add more tags for more seeds
         // Then make it so if tag was this do this 
         // More booleans? 
         if (currentday.day == (dayPlanted + 1) && PLANTED)
         {
+     
+            
             REPLACE = true;
             print("MADE IT ");
+            //print("DIRT Truth Value: " + REPLACE);
              //print("current value: " + currentday.day);
              //print("DayPlanted + 1: " + (dayPlanted + 1));
         }

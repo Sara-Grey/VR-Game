@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8474523482773474773}
   - component: {fileID: 8474523482773474769}
   m_Layer: 0
-  m_Name: WaterDroplet_Collider
+  m_Name: WaterDroplet
   m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

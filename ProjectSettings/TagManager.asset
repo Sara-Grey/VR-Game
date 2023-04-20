@@ -12,6 +12,7 @@ TagManager:
   - Plant
   - Seedling
   - DirtDroplet
+  - Shovel
   layers:
   - Default
   - TransparentFX

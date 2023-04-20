@@ -8,22 +8,28 @@ public class SeedlingBehavior : MonoBehaviour
     public GameObject plantObject;
     public GameObject dirtObject; // currently this pulls from the prefab, not the object that actually exists
     public bool WATERED;
+    public bool COMMANDED;
+
     public Transform parent;
     //public DirtBehavior dirtBehavior;
 
     private void Start()
     {
         WATERED = false;
-        
+        COMMANDED = false;
     }
     
+    public void Test()
+    {
+        print("Ayo I'm walkin here");
+
+    }
     public void OnTriggerEnter(Collider other)
     {
     
         if (other.gameObject.tag == "Water" && WATERED == false)
         {
             print("Plant is watered");
-            
             WATERED = true;
             
         }
@@ -31,7 +37,8 @@ public class SeedlingBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (dirtObject.GetComponent<DirtBehavior>().REPLACE && WATERED)
+        //print("SEEDLING Truth Value: " + dirtObject.GetComponent<DirtBehavior>().REPLACE);
+        if (COMMANDED && WATERED)
         {
             print("ENTERED STATEMENT");
             GameObject carrotInstance;
