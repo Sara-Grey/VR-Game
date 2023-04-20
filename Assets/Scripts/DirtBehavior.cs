@@ -7,6 +7,7 @@ using UnityEngine;
 public class DirtBehavior : MonoBehaviour
 {
     public PlantController currentday;
+    public TaskChecker taskChecker;
     public SeedlingBehavior seedlingBehavior;
 
     public GameObject dirtObject;
@@ -62,20 +63,22 @@ public class DirtBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        dirtFillCounter++;
+        Debug.Log(other.gameObject.name);
         // FILL WITH DIRT 
         if (other.gameObject.tag == "DirtDroplet")
         {
-            if (dirtFillCounter < 3)
+            dirtFillCounter++;
+            if (dirtFillCounter <= 3)
             {
                 Destroy(other.gameObject);
                 print(dirtFillCounter);
             }
 
-            if (dirtFillCounter == 3)
+            if (dirtFillCounter >= 3)
             {
                 print("FILLED");
                 FILLED = true;
+                taskChecker.checkTask(0);
             }
             /*
             if (dirtFillCounter >= 4)
@@ -92,7 +95,7 @@ public class DirtBehavior : MonoBehaviour
             */
         }
         // PLANT SEED 
-        if (other.gameObject.name.EndsWith("Seed") && TILLED && !PLANTED)
+        if (other.gameObject.tag.EndsWith("Seed") && TILLED && FILLED && !PLANTED)
         {
             seedname = other.gameObject.name;
             Destroy(other.gameObject);
@@ -100,11 +103,15 @@ public class DirtBehavior : MonoBehaviour
             if (other.gameObject.tag == "CarrotSeed")
             {
                 plantInstance = Instantiate(carrotSeedling, dirtObject.GetComponent<Renderer>().bounds.center, carrotSeedling.transform.rotation);
+                taskChecker.checkTask(2);
+                PLANTED = true;
 
             }
             if (other.gameObject.tag == "CabbageSeed")
             {
                 plantInstance = Instantiate(cabbageSeedling, dirtObject.GetComponent<Renderer>().bounds.center, cabbageSeedling.transform.rotation);
+                taskChecker.checkTask(2);
+                PLANTED = true;
 
             }
             /*
@@ -114,7 +121,6 @@ public class DirtBehavior : MonoBehaviour
 
             }
             */
-            PLANTED = true;
             dayPlanted = currentday.day;
             // prints once no matter how many duplicates. 
             
@@ -136,14 +142,16 @@ public class DirtBehavior : MonoBehaviour
 
                 print("WATERED");
                 WATERED = true;
+                taskChecker.checkTask(3);
             }
+            // over watered
             if (waterFillCounter >= 4)
             {
                 Destroy(other.gameObject);
 
                 DirtRenderer1.enabled = false;
                 DirtRenderer2.enabled = false;
-                DirtRenderer3.enabled = false;
+                DirtRenderer3.enabled = true;
                 WATERED = false;
                 TILLED = false;
                 PLANTED = false;
@@ -195,6 +203,7 @@ public class DirtBehavior : MonoBehaviour
                 finalCarrotInstance = Instantiate(carrot, dirtObject.GetComponent<Transform>().position, carrotJuvie.GetComponent<Transform>().rotation) as GameObject;
                 Destroy(carrotInstance.gameObject);
                 plantlimit--;
+
             }
         }
     }
@@ -203,11 +212,12 @@ public class DirtBehavior : MonoBehaviour
     {
         // TILL DIRT
         // Becomes Tilled upon Collision with Hoe Head leaving the cube's collider
-        if (other.gameObject.tag == "Hoe" && FILLED)
+        if (other.gameObject.tag == "Hoe" && FILLED && !TILLED)
         {
             TILLED = true;
+            taskChecker.checkTask(1);
         }
-        if (other.gameObject.tag == "Shovel" && FILLED)
+        if (other.gameObject.tag == "Shovel")
         {
             DirtRenderer1.enabled = false;
             DirtRenderer2.enabled = false;
@@ -216,6 +226,8 @@ public class DirtBehavior : MonoBehaviour
             TILLED = false;
             PLANTED = false;
             FILLED = false;
+            dirtFillCounter = 0;
+            waterFillCounter = 0;
         }
         if (other.gameObject.tag == "Carrot" || other.gameObject.tag == "Cabbage")
         {
@@ -226,6 +238,8 @@ public class DirtBehavior : MonoBehaviour
             TILLED = false;
             PLANTED = false;
             FILLED = false;
+            dirtFillCounter = 0;
+            waterFillCounter = 0;
         }
     }
 
@@ -244,12 +258,12 @@ public class DirtBehavior : MonoBehaviour
             DirtRenderer1.enabled = true;
         }
         
-        if (TILLED)
+        if (FILLED && TILLED)
         {
             DirtRenderer1.enabled = false;
             DirtRenderer2.enabled = true;
         }
-        if (PLANTED)
+        if (FILLED && TILLED && PLANTED)
         {
             DirtRenderer2.enabled = false;
             DirtRenderer3.enabled = true;
