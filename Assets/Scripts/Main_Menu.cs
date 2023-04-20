@@ -6,16 +6,7 @@ using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
     public int Garden;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void StartGame() 
     {
         SceneManager.LoadScene(Garden);
