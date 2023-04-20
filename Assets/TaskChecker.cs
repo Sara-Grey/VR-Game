@@ -21,6 +21,6 @@ public class TaskChecker : MonoBehaviour
     public void checkTask(int task)
     {
         TaskList[task].isOn = true;
-        audioData.Play(0);
+        //audioData.Play(0);
     }
 }

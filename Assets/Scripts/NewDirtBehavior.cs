@@ -4,11 +4,11 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DirtBehavior : MonoBehaviour
+public class NewDirtBehavior : MonoBehaviour
 {
     public PlantController currentday;
     public TaskChecker taskChecker;
-    public SeedlingBehavior seedlingBehavior;
+    //public SeedlingBehavior seedlingBehavior;
 
     public GameObject dirtObject;
     public GameObject carrot;
@@ -25,7 +25,7 @@ public class DirtBehavior : MonoBehaviour
     private GameObject finalCarrotInstance;
     private GameObject potatoInstance;
     private GameObject potatoFinalInstance;
-    
+
 
     public GameObject dirtDroplet;
     public Material altmaterial;
@@ -36,7 +36,7 @@ public class DirtBehavior : MonoBehaviour
     public bool DEAD;
     public bool TILLED;
     public bool PLANTED;
-    public bool FILLED; 
+    public bool FILLED;
     public int dirtFillCounter;
     public int waterFillCounter;
     private int justForPotato;
@@ -85,7 +85,7 @@ public class DirtBehavior : MonoBehaviour
                 FILLED = true;
                 taskChecker.checkTask(0);
             }
-           
+
         }
         // PLANT SEED 
         if (other.gameObject.tag.EndsWith("Seed") && TILLED && FILLED && !PLANTED)
@@ -107,7 +107,7 @@ public class DirtBehavior : MonoBehaviour
                 PLANTED = true;
 
             }
-            
+
             if (other.gameObject.name.StartsWith("Potato"))
             {
                 plantInstance = Instantiate(potatoSeedling, dirtObject.GetComponent<Renderer>().bounds.center, potatoSeedling.transform.rotation);
@@ -115,10 +115,10 @@ public class DirtBehavior : MonoBehaviour
                 PLANTED = true;
 
             }
-            
+
             dayPlanted = currentday.day;
             // prints once no matter how many duplicates. 
-            
+
         }
 
         // WATER
@@ -177,10 +177,10 @@ public class DirtBehavior : MonoBehaviour
                 plantlimit--;
             }
 
-            
-            if  (seedname == "CarrotSeed" && plantJuvilimit >0)
+
+            if (seedname == "CarrotSeed" && plantJuvilimit > 0)
             {
-                
+
                 carrotInstance = Instantiate(carrotJuvie, dirtObject.GetComponent<Transform>().position, carrotSeedling.GetComponent<Transform>().rotation) as GameObject;
                 Destroy(plantInstance.gameObject);
                 plantJuvilimit--;
@@ -202,9 +202,9 @@ public class DirtBehavior : MonoBehaviour
         // DOS DIAS  
         if (currentday.day > (dayPlanted + 2) && PLANTED && WATERED)
         {
-            if(seedname == "CarrotSeed" && plantlimit >0)
+            if (seedname == "CarrotSeed" && plantlimit > 0)
             {
-        
+
                 finalCarrotInstance = Instantiate(carrot, dirtObject.GetComponent<Transform>().position, carrotJuvie.GetComponent<Transform>().rotation) as GameObject;
                 Destroy(carrotInstance.gameObject);
                 plantlimit--;
@@ -222,7 +222,7 @@ public class DirtBehavior : MonoBehaviour
 
         if (currentday.day == (dayPlanted + 3) && PLANTED && WATERED)
         {
-            
+
             if (seedname == "PotatoSeed" && justForPotato > 0)
             {
 
@@ -235,7 +235,7 @@ public class DirtBehavior : MonoBehaviour
             }
         }
     }
-     
+
     private void OnTriggerExit(Collider other)
     {
         // TILL DIRT
@@ -269,31 +269,28 @@ public class DirtBehavior : MonoBehaviour
             FILLED = false;
             dirtFillCounter = 0;
             waterFillCounter = 0;
-<<<<<<< Updated upstream
             dayPlanted = -1;
-=======
             plantJuvilimit = 1;
             plantlimit = 1;
             justForPotato =1;
->>>>>>> Stashed changes
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Planting();
-             
+
         if (FILLED)
         {
             DirtRenderer1.enabled = true;
         }
-        
+
         if (FILLED && TILLED)
         {
             DirtRenderer1.enabled = false;
@@ -307,7 +304,7 @@ public class DirtBehavior : MonoBehaviour
 
         print("current value: " + currentday.day);
         print("DayPlanted + 1: " + (dayPlanted + 1));
-    
+
 
     }
 }
