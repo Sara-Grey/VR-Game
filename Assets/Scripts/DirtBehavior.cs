@@ -217,7 +217,7 @@ public class DirtBehavior : MonoBehaviour
             TILLED = true;
             taskChecker.checkTask(1);
         }
-        if (other.gameObject.tag == "Shovel" && FILLED)
+        if (other.gameObject.tag == "Shovel")
         {
             DirtRenderer1.enabled = false;
             DirtRenderer2.enabled = false;
