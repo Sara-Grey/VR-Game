@@ -10,7 +10,8 @@ public class TaskChecker : MonoBehaviour
     public static Toggle Task2;
     public static Toggle Task3;
     public static Toggle Task4;
-    public Toggle[] TaskList = { Task1, Task2, Task3, Task4 };
+    public static Toggle Task5;
+    public Toggle[] TaskList = { Task1, Task2, Task3, Task4, Task5};
 
     public void checkTask(int task)
     {

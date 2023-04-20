@@ -7,6 +7,7 @@ using UnityEngine;
 public class DirtBehavior : MonoBehaviour
 {
     public PlantController currentday;
+    public TaskChecker taskChecker;
     public SeedlingBehavior seedlingBehavior;
 
     public GameObject dirtObject;
@@ -72,10 +73,11 @@ public class DirtBehavior : MonoBehaviour
                 print(dirtFillCounter);
             }
 
-            if (dirtFillCounter == 3)
+            if (dirtFillCounter >= 3)
             {
                 print("FILLED");
                 FILLED = true;
+                taskChecker.checkTask(0);
             }
             /*
             if (dirtFillCounter >= 4)
@@ -100,12 +102,12 @@ public class DirtBehavior : MonoBehaviour
             if (other.gameObject.tag == "CarrotSeed")
             {
                 plantInstance = Instantiate(carrotSeedling, dirtObject.GetComponent<Renderer>().bounds.center, carrotSeedling.transform.rotation);
-
+                taskChecker.checkTask(2);
             }
             if (other.gameObject.tag == "CabbageSeed")
             {
                 plantInstance = Instantiate(cabbageSeedling, dirtObject.GetComponent<Renderer>().bounds.center, cabbageSeedling.transform.rotation);
-
+                taskChecker.checkTask(2);
             }
             /*
             if (other.gameObject.name.StartsWith("Potato"))
@@ -136,6 +138,7 @@ public class DirtBehavior : MonoBehaviour
 
                 print("WATERED");
                 WATERED = true;
+                taskChecker.checkTask(3);
             }
             if (waterFillCounter >= 4)
             {
@@ -206,6 +209,7 @@ public class DirtBehavior : MonoBehaviour
         if (other.gameObject.tag == "Hoe" && FILLED)
         {
             TILLED = true;
+            taskChecker.checkTask(1);
         }
         if (other.gameObject.tag == "Shovel" && FILLED)
         {
@@ -216,6 +220,8 @@ public class DirtBehavior : MonoBehaviour
             TILLED = false;
             PLANTED = false;
             FILLED = false;
+            dirtFillCounter = 0;
+            waterFillCounter = 0;
         }
         if (other.gameObject.tag == "Carrot" || other.gameObject.tag == "Cabbage")
         {
@@ -226,6 +232,8 @@ public class DirtBehavior : MonoBehaviour
             TILLED = false;
             PLANTED = false;
             FILLED = false;
+            dirtFillCounter = 0;
+            waterFillCounter = 0;
         }
     }
 
