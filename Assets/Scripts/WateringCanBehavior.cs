@@ -14,7 +14,7 @@ public class WateringCanBehavior : MonoBehaviour
     public Renderer waterRenderer;
     public void Start()
     {
-        waterLimit = 20; // This should be 5 but for testing purposes I changed it - <3 Colin
+        waterLimit = 10; // This should be 5 but for testing purposes I changed it - <3 Colin
         dropsRemaining = waterLimit;
     }
 
