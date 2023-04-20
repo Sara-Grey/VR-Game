@@ -11,10 +11,16 @@ public class TaskChecker : MonoBehaviour
     public static Toggle Task3;
     public static Toggle Task4;
     public static Toggle Task5;
+    private AudioSource audioData;
     public Toggle[] TaskList = { Task1, Task2, Task3, Task4, Task5};
 
+    void Start()
+    {
+        audioData = GetComponent<AudioSource>();
+    }
     public void checkTask(int task)
     {
         TaskList[task].isOn = true;
+        audioData.Play(0);
     }
 }

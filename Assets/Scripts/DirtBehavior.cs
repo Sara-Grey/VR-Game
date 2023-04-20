@@ -97,7 +97,7 @@ public class DirtBehavior : MonoBehaviour
         // PLANT SEED 
         if (other.gameObject.tag.EndsWith("Seed") && TILLED && FILLED && !PLANTED)
         {
-            seedname = other.gameObject.name;
+            seedname = other.gameObject.tag;
             Destroy(other.gameObject);
             // Spawn seedling to be in the center of the dirt cube 
             if (other.gameObject.tag == "CarrotSeed")
@@ -195,7 +195,7 @@ public class DirtBehavior : MonoBehaviour
             
         }
         // DOS DIAS  
-        if (currentday.day == (dayPlanted + 2) && PLANTED && WATERED)
+        if (currentday.day > (dayPlanted + 2) && PLANTED && WATERED)
         {
             if(seedname == "CarrotSeed" && plantlimit >0)
             {
@@ -228,6 +228,7 @@ public class DirtBehavior : MonoBehaviour
             FILLED = false;
             dirtFillCounter = 0;
             waterFillCounter = 0;
+            dayPlanted = -1;
         }
         if (other.gameObject.tag == "Carrot" || other.gameObject.tag == "Cabbage")
         {
@@ -240,6 +241,7 @@ public class DirtBehavior : MonoBehaviour
             FILLED = false;
             dirtFillCounter = 0;
             waterFillCounter = 0;
+            dayPlanted = -1;
         }
     }
 
