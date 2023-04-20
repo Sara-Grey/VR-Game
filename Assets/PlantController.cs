@@ -7,21 +7,31 @@ public class PlantController : MonoBehaviour
 {
     public int day = 1;
     public TMP_Text dayText;
-    // Start is called before the first frame update
+    public TMP_Text dayTextUI;
+    public GameObject origin;
+    private Vector3 origPos;
+    private Animation canvasAnimation; // private Animation variable
+
     void Start()
     {
-        
+        origPos = origin.transform.position;
+        canvasAnimation = GameObject.Find("Canvas").GetComponent<Animation>(); // get reference to Animation component
+        Debug.Log("Found animation component: " + canvasAnimation.name);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // code to control plant growth
     }
+
     public void incrementDay()
     {
+        origin.transform.position = origPos;
+        origin.transform.rotation = Quaternion.identity;
         day += 1;
         dayText.text = $"Day {day}";
-        Debug.Log(day);
+        dayTextUI.text = $"Day {day}";
+
+        canvasAnimation.Play("CanvasFade"); // play the animation
     }
 }
