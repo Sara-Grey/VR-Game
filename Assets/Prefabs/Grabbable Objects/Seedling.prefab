@@ -117,3 +117,5 @@ MonoBehaviour:
     type: 3}
   WATERED: 0
   parent: {fileID: 2594631546802178476}
+  dirtBehavior: {fileID: 5377631496258823300, guid: 6abfc9b0b85331d43a4b044cbb806e3f,
+    type: 3}

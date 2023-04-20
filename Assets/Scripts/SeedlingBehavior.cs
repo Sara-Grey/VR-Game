@@ -9,25 +9,14 @@ public class SeedlingBehavior : MonoBehaviour
     public GameObject dirtObject; // currently this pulls from the prefab, not the object that actually exists
     public bool WATERED;
     public Transform parent;
+    //public DirtBehavior dirtBehavior;
 
     private void Start()
     {
         WATERED = false;
-    }
-    public bool Test()
-    {
-        if (WATERED)
-        {
-            print("Test Returned True");
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
         
     }
+    
     public void OnTriggerEnter(Collider other)
     {
     
@@ -36,15 +25,20 @@ public class SeedlingBehavior : MonoBehaviour
             print("Plant is watered");
             
             WATERED = true;
-            GameObject carrotInstance;
-            carrotInstance = Instantiate(plantObject, parent.position, parent.rotation) as GameObject;
-            Destroy(seedlingObject);
+            
         }
     }
 
     private void Update()
     {
-        Test();
-        
+        if (dirtObject.GetComponent<DirtBehavior>().REPLACE && WATERED)
+        {
+            print("ENTERED STATEMENT");
+            GameObject carrotInstance;
+            carrotInstance = Instantiate(plantObject, parent.position, parent.rotation) as GameObject;
+            Destroy(seedlingObject);
+
+        }
+
     }
 }

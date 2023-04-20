@@ -134,7 +134,16 @@ MonoBehaviour:
   altmaterial: {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
   seedlingBehavior: {fileID: 2594631546802178479, guid: 9248d9e16131bca4ebd6a32f7a751a13,
     type: 3}
-  DirtRenderer: {fileID: 0}
+  DirtRenderer1: {fileID: 2901276231176581679, guid: 639fe3bb35fed634598f3fb177c86b96,
+    type: 3}
+  DirtRenderer2: {fileID: -5819328720118838395, guid: 639fe3bb35fed634598f3fb177c86b96,
+    type: 3}
+  DirtRenderer3: {fileID: -200711543021650409, guid: 639fe3bb35fed634598f3fb177c86b96,
+    type: 3}
   TILLED: 0
   PLANTED: 0
   FILLED: 0
+  filledCounter: 0
+  currentday: {fileID: 0}
+  dayPlanted: 0
+  REPLACE: 0

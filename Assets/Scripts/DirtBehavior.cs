@@ -19,9 +19,15 @@ public class DirtBehavior : MonoBehaviour
     public bool PLANTED;
     public bool FILLED;
     public int filledCounter;
+
+    public PlantController currentday;
+    public int dayPlanted;
+    public bool REPLACE;
+
     // Start is called before the first frame update
     void Start()
     {
+        REPLACE = false;
         TILLED = false;
         PLANTED = false;
         FILLED = false;
@@ -30,18 +36,25 @@ public class DirtBehavior : MonoBehaviour
         DirtRenderer2.enabled = false;
         DirtRenderer3.enabled = false;
         filledCounter = 0;
+        dayPlanted = -1;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Destroys Seed upon Collision
+        // PLANT SEED 
         if (other.gameObject.tag == "Seed" && TILLED && !PLANTED)
         {
             Destroy(other.gameObject);
             // Spawn seedling to be in the center of the dirt cube 
             Instantiate(seedling, dirtObject.GetComponent<Renderer>().bounds.center, seedling.transform.rotation);
-            PLANTED = true; 
+            PLANTED = true;
+            dayPlanted = currentday.day;
+            // prints once no matter how many duplicates. 
+            
         }
+
+
+        // FILL WITH DIRT 
         if (other.gameObject.tag == "DirtDroplet")
         {
             if (filledCounter < 3)
@@ -60,7 +73,7 @@ public class DirtBehavior : MonoBehaviour
         }
         
     }
-
+    // TILL DIRT 
     private void OnTriggerExit(Collider other)
     {
         // Becomes Tilled upon Collision with Hoe Head leaving the cube's collider
@@ -70,7 +83,7 @@ public class DirtBehavior : MonoBehaviour
             TILLED = true;
             
         }
-    } 
+    }
 
     // Update is called once per frame
     void Update()
@@ -86,8 +99,35 @@ public class DirtBehavior : MonoBehaviour
         }
         if (PLANTED)
         {
-            DirtRenderer2.enabled=false;
-            DirtRenderer3.enabled = true;   
+            DirtRenderer2.enabled = false;
+            DirtRenderer3.enabled = true;
         }
+        // Add more tags for more seeds
+        // Then make it so if tag was this do this 
+        // More booleans? 
+        if (currentday.day == (dayPlanted + 1) && PLANTED)
+        {
+            REPLACE = true;
+            print("MADE IT ");
+             //print("current value: " + currentday.day);
+             //print("DayPlanted + 1: " + (dayPlanted + 1));
+        }
+        /*
+         if (currentday.day > (dayPlanted + 1) && PLANTED)
+         {
+             REPLACE = true;
+             print("overshot ");
+             print("current value: " + currentday.day);
+             print("DayPlanted + 1: " + (dayPlanted + 1));
+         }
+         if (currentday.day < (dayPlanted + 1) && PLANTED)
+         {
+             REPLACE = true;
+             print("undershot ");
+             print("current value: " + currentday.day);
+             print("DayPlanted + 1: " + (dayPlanted + 1));
+         }
+            */
+
     }
 }
