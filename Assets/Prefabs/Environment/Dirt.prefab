@@ -128,12 +128,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtObject: {fileID: 5377631496258823327}
-  seedling: {fileID: 2594631546802178472, guid: 9248d9e16131bca4ebd6a32f7a751a13,
-    type: 3}
-  plant: {fileID: 7000616842033347155, guid: bf538df45db5f514c9759aefae39a97b, type: 3}
-  altmaterial: {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
   seedlingBehavior: {fileID: 2594631546802178479, guid: 9248d9e16131bca4ebd6a32f7a751a13,
     type: 3}
+  seedling: {fileID: 2594631546802178472, guid: 9248d9e16131bca4ebd6a32f7a751a13,
+    type: 3}
+  plant: {fileID: 855044432368962980, guid: 517548d6ee4c1db478cf7fd6f336b632, type: 3}
+  altmaterial: {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
   DirtRenderer1: {fileID: 2901276231176581679, guid: 639fe3bb35fed634598f3fb177c86b96,
     type: 3}
   DirtRenderer2: {fileID: -5819328720118838395, guid: 639fe3bb35fed634598f3fb177c86b96,

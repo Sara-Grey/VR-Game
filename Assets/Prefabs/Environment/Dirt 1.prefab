@@ -399,7 +399,7 @@ MonoBehaviour:
     type: 3}
   seedling: {fileID: 2594631546802178472, guid: 9248d9e16131bca4ebd6a32f7a751a13,
     type: 3}
-  plant: {fileID: 7000616842033347155, guid: bf538df45db5f514c9759aefae39a97b, type: 3}
+  plant: {fileID: 855044432368962980, guid: 517548d6ee4c1db478cf7fd6f336b632, type: 3}
   altmaterial: {fileID: 2100000, guid: 1b056faa7cbb914478736a10f46230f8, type: 2}
   DirtRenderer1: {fileID: 1062850731970372873}
   DirtRenderer2: {fileID: 702263695230459043}

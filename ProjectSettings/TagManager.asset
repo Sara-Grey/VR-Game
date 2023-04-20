@@ -13,6 +13,7 @@ TagManager:
   - Seedling
   - DirtDroplet
   - Shovel
+  - Well
   layers:
   - Default
   - TransparentFX

@@ -138,7 +138,8 @@ public class DirtBehavior : MonoBehaviour
             DirtRenderer3.enabled = true;
         }
 
-
+        print("current value: " + currentday.day);
+        print("DayPlanted + 1: " + (dayPlanted + 1));
         // Add more tags for more seeds
         // Then make it so if tag was this do this 
         // More booleans? 
@@ -148,9 +149,7 @@ public class DirtBehavior : MonoBehaviour
             seedlingBehavior.Test();
             REPLACE = true;
             print("MADE IT ");
-            //print("DIRT Truth Value: " + REPLACE);
-             //print("current value: " + currentday.day);
-             //print("DayPlanted + 1: " + (dayPlanted + 1));
+            
         }
         /*
          if (currentday.day > (dayPlanted + 1) && PLANTED)

@@ -111,11 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedlingObject: {fileID: 2594631546802178472}
-  plantObject: {fileID: 7000616842033347155, guid: bf538df45db5f514c9759aefae39a97b,
+  plantObject: {fileID: 855044432368962980, guid: 517548d6ee4c1db478cf7fd6f336b632,
     type: 3}
   dirtObject: {fileID: 5377631496258823327, guid: 6abfc9b0b85331d43a4b044cbb806e3f,
     type: 3}
   WATERED: 0
   parent: {fileID: 2594631546802178476}
-  dirtBehavior: {fileID: 5377631496258823300, guid: 6abfc9b0b85331d43a4b044cbb806e3f,
-    type: 3}
