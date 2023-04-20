@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 7456161369506980598}
   - component: {fileID: 7456161369506980601}
   m_Layer: 0
-  m_Name: dirt_sack
+  m_Name: Tool_DirtSack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

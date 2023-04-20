@@ -57,7 +57,22 @@ public class DirtBehavior : MonoBehaviour
             
         }
 
+        if (other.gameObject.tag == "Water" && TILLED && PLANTED)
+        {
+            if (filledCounter < 3)
+            {
+                Destroy(other.gameObject);
+                filledCounter++;
+                print(filledCounter);
+            }
 
+            if (filledCounter == 3)
+            {
+                print("FILLED");
+                FILLED = true;
+            }
+        }
+        
         // FILL WITH DIRT 
         if (other.gameObject.tag == "DirtDroplet")
         {
@@ -73,7 +88,6 @@ public class DirtBehavior : MonoBehaviour
                 print("FILLED");
                 FILLED = true;
             }
-            
         }
         
     }
@@ -100,18 +114,19 @@ public class DirtBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        seedlingBehavior.Test();
+        
         /*
         if (seedling.GetComponent<SeedlingBehavior>() != null)
         {
             print("ABLE TO FIND IT ");
         }
-        print(seedling.GetComponent<SeedlingBehavior>().WATERED);        
+        */
+        //print(seedling.GetComponent<SeedlingBehavior>().WATERED);        
         if (FILLED)
         {
             DirtRenderer1.enabled = true;
         }
-        */
+        
         if (TILLED)
         {
             DirtRenderer1.enabled = false;
@@ -129,8 +144,8 @@ public class DirtBehavior : MonoBehaviour
         // More booleans? 
         if (currentday.day == (dayPlanted + 1) && PLANTED)
         {
-     
-            
+
+            seedlingBehavior.Test();
             REPLACE = true;
             print("MADE IT ");
             //print("DIRT Truth Value: " + REPLACE);
