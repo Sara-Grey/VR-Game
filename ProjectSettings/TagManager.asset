@@ -17,6 +17,8 @@ TagManager:
   - CarrotSeed
   - CabbageSeed
   - Cabbage
+  - PotatoSeed
+  - Potato
   layers:
   - Default
   - TransparentFX
